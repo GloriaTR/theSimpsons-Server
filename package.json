@@ -10,9 +10,9 @@
     "start:dev": "node --watch .",
     "build": "tsc",
     "build:dev": "tsc -w",
-    "test": "jest --passWithNoTests",
-    "test:dev": "jest --watchAll --passWithNoTests",
-    "test:coverage": "jest --coverage --passWithNoTests"
+    "test": "jest",
+    "test:dev": "jest --watchAll",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
