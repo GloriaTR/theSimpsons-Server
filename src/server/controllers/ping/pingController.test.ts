@@ -15,8 +15,8 @@ describe("Given a pingController controller", () => {
 
       pingController(req as Request, res as Response);
 
-      expect(res.status).toHaveBeenLastCalledWith(expectedStatusCode);
-      expect(res.json).toHaveBeenLastCalledWith({ message: expectedMessage });
+      expect(res.status).toHaveBeenCalledWith(expectedStatusCode);
+      expect(res.json).toHaveBeenCalledWith({ message: expectedMessage });
     });
   });
 });
