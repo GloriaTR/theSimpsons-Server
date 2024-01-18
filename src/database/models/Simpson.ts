@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
+import { type SimpsonStructure } from "./types.js";
 
-const simpsonSchema = new Schema({
+const simpsonSchema = new Schema<SimpsonStructure>({
   name: {
     type: String,
     required: true,
