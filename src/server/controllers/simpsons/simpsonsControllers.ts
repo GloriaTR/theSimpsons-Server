@@ -3,14 +3,23 @@ import Simpson from "../../../database/models/Simpson.js";
 import CustomError from "../../../CustomError/CustomError.js";
 
 export const getSimpsons = async (
-  _req: Request,
+  req: Request,
   res: Response,
   next: NextFunction,
 ) => {
   try {
-    const simpsons = await Simpson.find().limit(10).exec();
+    const { limit, skip } = req.query;
+    const limitSimpsonsPerPage = Number(limit);
+    const skipSimpsons = Number(skip);
 
-    res.status(200).json({ simpsons });
+    const simpsons = await Simpson.find()
+      .skip(skipSimpsons)
+      .limit(limitSimpsonsPerPage)
+      .exec();
+
+    const totalSimpsons = await Simpson.where().countDocuments().exec();
+
+    res.status(200).json({ simpsons, totalSimpsons });
   } catch (error: unknown) {
     const customError = new CustomError(
       (error as Error).message,
